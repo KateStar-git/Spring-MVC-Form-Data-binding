@@ -7,4 +7,3 @@ All informations displays after pressing submit button.
 
 # Lists of languages and systems coded in application.properties file
 
-#

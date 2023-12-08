@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns th="http://wwww.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+</head>
+<body>
+<h3> Student Registration Form</h3>
+
+<!--object student is Name of model attribute in
+StudentController: theModel.addAttribute("student", theStudent)-->
+
+<form th:action="@{/processStudentForm}" th:object="${student}" method="post">
+    <!--when the form is loaded Spring MVC will read student from the model, then call
+    student.getFirstName, student. getLastName-->
+
+First name: <input type="text" th:field="*{firstName}" />
+    <br><br>
+    Lastname: <input type="text" th:field="*{lastName}" />
+
+    <br><br>
+
+    <!--this is loop which dynamicly loop over the countries; 'tempCountry' is temp loop variable
+    th:value it is a value which will be submitted after press Submit button
+    dynamicly we display oa list of countries based on info from model attribute-->
+    Country:
+    <select th:field="*{country}">
+        <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}"/>
+    </select>
+
+    <br><br>
+    <!--binding to property on Student object-->
+    <!--set for loop over the list of languages from the model attribute-->
+    <!--value send during form submission-->
+    <!--displayed to user-->
+Favorite Programming Language:
+    <input type="radio" th:field="*{favoriteLanguage}"
+           th:each="tempLang : ${languages}"
+           th:value="${tempLang}"
+           th:text="${tempLang}"
+    />
+
+    <br><br>
+
+Favorite Operating Systems:
+    <input type="checkbox" th:field="*{favoriteSystems}"
+           th:each="tempSystem : ${systems}"
+           th:value="${tempSystem}"
+           th:text="${tempSystem}"
+    />
+
+
+    <br><br>
+     <input type="submit" value="Submit" />
+    <!--when the form is submitted  Spring MVC will create a new Student instance and
+    add to the model, then call
+   student.setFirstName, student.setLastName-->
+</form>
+</body>
+</html>

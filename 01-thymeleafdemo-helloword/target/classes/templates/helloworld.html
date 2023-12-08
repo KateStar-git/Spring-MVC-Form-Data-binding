@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Thymeleaf Demo</title>
+</head>
+
+<body>
+Hello Wordl of Spring!
+<br><br>
+Student name:<span th:text="${param.studentName}" /> <!--studentName data is reading from HelloWorld-form.html-->
+<br><br>
+
+The message: <span th:text ="${message}" />
+
+</body>
+
+
+
+</html>
